@@ -59,7 +59,7 @@ export async function getDB(): Promise<IDBPDatabase<EcommerceDB>> {
   if (dbInstance) return dbInstance;
 
   dbInstance = await openDB<EcommerceDB>(DB_NAME, DB_VERSION, {
-    upgrade(db: IDBPDatabase<EcommerceDB>) {
+   upgrade(db: any) {
       // Sales store
       if (!db.objectStoreNames.contains("sales")) {
         const salesStore = db.createObjectStore("sales", { keyPath: "id" });
